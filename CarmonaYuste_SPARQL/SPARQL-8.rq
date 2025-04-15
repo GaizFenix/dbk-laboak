@@ -1,0 +1,14 @@
+PREFIX eustat: <urn:eustat:property:>
+PREFIX ehu: <https://ehu.eus/staff/pdi/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX eus: <https://data.euskadi.eus/resource/>
+
+SELECT ?pertsona WHERE {
+    ?pertsona eustat:bizilekua eus:bilbo .
+    SERVICE <http://34.140.73.245:7200/repositories/abd-urrunekoa> {
+        ?pertsona ehu:bizilekua eus:bilbo .
+    }
+    SERVICE <http://192.168.1.1:7200/repositories/abd-urrunekoa> {
+        ?pertsona ehu:bizilekua eus:bilbo .
+    }
+}
