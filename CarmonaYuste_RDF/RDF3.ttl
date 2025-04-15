@@ -1,0 +1,108 @@
+@prefix attr: <http://carmonayuste.eus#attr/> .
+@prefix job: <http://carmonayuste.eus#job/> .
+@prefix location: <http://carmonayuste.eus#location/> .
+@prefix person: <http://carmonayuste.eus/person/> .
+
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+# Data
+person:1 rdf:type foaf:Person;
+    attr:izena "Juan"@es;
+    attr:abizena "Perez"@es;
+    attr:adina "28"^^xsd:integer;
+    attr:hiria location:Buenos_Aires;
+    attr:herrialdea location:Argentina;
+    attr:lanbidea job:Ingeniero;
+    attr:urteko_soldata "75000"^^xsd:integer.
+
+person:2 rdf:type foaf:Person;
+    attr:izena "Maria"@es;
+    attr:abizena "Gomez"@es;
+    attr:adina "34"^^xsd:integer;
+    attr:hiria location:Madrid;
+    attr:herrialdea location:España;
+    attr:lanbidea job:Doctora;
+    attr:urteko_soldata "90000"^^xsd:integer.
+
+person:3 rdf:type foaf:Person;
+    attr:izena "John"@en;
+    attr:abizena "Smith"@en;
+    attr:adina "45"^^xsd:integer;
+    attr:hiria location:Nueva_York;
+    attr:herrialdea location:EEUU;
+    attr:lanbidea job:Abogado;
+    attr:urteko_soldata "110000"^^xsd:integer.
+
+person:4 rdf:type foaf:Person;
+    attr:izena "Lisa"@en;
+    attr:abizena "Wong"@ja;
+    attr:adina "29"^^xsd:integer;
+    attr:hiria location:Tokio;
+    attr:herrialdea location:Japon;
+    attr:lanbidea job:Diseñadora;
+    attr:urteko_soldata "68000"^^xsd:integer.
+
+person:5 rdf:type foaf:Person;
+    attr:izena "Carlos"@es;
+    attr:abizena "Santos"@es;
+    attr:adina "40"^^xsd:integer;
+    attr:hiria location:Sao_Paulo;
+    attr:herrialdea location:Brasil;
+    attr:lanbidea job:Arquitecto;
+    attr:urteko_soldata "82000"^^xsd:integer.
+
+person:6 rdf:type foaf:Person;
+    attr:izena "Sophie"@fr;
+    attr:abizena "Dubois"@fr;
+    attr:adina "27"^^xsd:integer;
+    attr:hiria location:Paris;
+    attr:herrialdea location:Francia;
+    attr:lanbidea job:Profesora;
+    attr:urteko_soldata "48000"^^xsd:integer.
+
+person:7 rdf:type foaf:Person;
+    attr:izena "Ahmed"@ar;
+    attr:abizena "Khan"@ar;
+    attr:adina "33"^^xsd:integer;
+    attr:hiria location:Dubai;
+    attr:herrialdea location:Emiratos_Arabes;
+    attr:lanbidea job:Ingeniero;
+    attr:urteko_soldata "95000"^^xsd:integer.
+
+person:8 rdf:type foaf:Person;
+    attr:izena "Emma"@en;
+    attr:abizena "Johnson"@en;
+    attr:adina "31"^^xsd:integer;
+    attr:hiria location:Londres;
+    attr:herrialdea location:Reino_Unido;
+    attr:lanbidea job:Marketing;
+    attr:urteko_soldata "60000"^^xsd:integer.
+
+person:9 rdf:type foaf:Person;
+    attr:izena "Luis"@es;
+    attr:abizena "Garcia"@es;
+    attr:adina "38"^^xsd:integer;
+    attr:hiria location:Mexico_DF;
+    attr:herrialdea location:Mexico;
+    attr:lanbidea job:Contador;
+    attr:urteko_soldata "58000"^^xsd:integer.
+
+person:10 rdf:type foaf:Person;
+    attr:izena "Yuki"@ja;
+    attr:abizena "Tanaka"@ja;
+    attr:adina "26"^^xsd:integer;
+    attr:hiria location:Osaka;
+    attr:herrialdea location:Japon;
+    attr:lanbidea job:Progamadora;
+    attr:urteko_soldata "72000"^^xsd:integer.
+
+person:11 rdf:type foaf:Person;
+    attr:izena "Mikel"@eu;
+    attr:abizena "Aranguren"@eu;
+    attr:adina "45"^^xsd:integer;
+    attr:hiria location:Bilbo;
+    attr:herrialdea location:Euskadi;
+    attr:lanbidea job:Profesor;
+    attr:urteko_soldata "0"^^xsd:integer.

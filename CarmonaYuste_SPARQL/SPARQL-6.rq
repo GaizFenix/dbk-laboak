@@ -1,0 +1,12 @@
+PREFIX gip: <http://gipuzkoa.eus/resource/>
+PREFIX wikidata: <http://www.wikidata.org/entity/>
+PREFIX owl: <http://www.w3.org/2002/07/owl#>
+PREFIX wdt: <http://www.wikidata.org/prop/direct/>
+
+SELECT ?alkate WHERE {
+    gip:gugenheim owl:sameAs ?museo .
+    SERVICE <https://query.wikidata.org/sparql> {
+        ?museo wdt:P131 ?hiria .
+        ?hiria wdt:P6 ?alkate .
+    }
+}

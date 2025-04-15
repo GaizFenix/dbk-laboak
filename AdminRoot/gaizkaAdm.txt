@@ -1,0 +1,69 @@
+CREATE DATABASE DBet;
+CREATE TABLE Bet(bId INT, bGambler INT, bEvent INT, bAmount INT, bResult INT);
+CREATE TABLE Gambler(gId INT PRIMARY KEY, gName VARCHAR(64), gEmail VARCHAR(128), gCredit INT);
+CREATE TABLE Event(eId INT PRIMARY KEY, eName VARCHAR(64), eDate DATE, eResult INT);
+ALTER TABLE Bet ADD CONSTRAINT fk_bGambler FOREIGN KEY (bGambler) REFERENCES Gambler(gId);
+ALTER TABLE Bet ADD CONSTRAINT fk_bEvent FOREIGN KEY (bEvent) REFERENCES
+Event(eId);
+INSERT INTO Gambler(gId, gName) VALUES (1, "MacBeth");
+INSERT INTO Gambler(gId, gName) VALUES (2, "Betty");
+INSERT INTO Event(eId, eName, eDate) VALUES (1, "SnailRace", '2024-02-01');
+INSERT INTO Event(eId, eName, eDate) VALUES (2, "CaterpillarFight", '2024
+-02-02');
+INSERT INTO Bet(bId, bGambler, bEvent, bResult) VALUES (1, 1, 1, "Turbo wins");
+INSERT INTO Bet(bId, bGambler, bEvent, bResult) VALUES (2, 2, 2, "Butterfly loses");
+UPDATE Event SET eDate = '2024-02-03' WHERE eName = 'SnailRace';
+
+CREATE USER 'LUser1';
+CREATE USER 'LUser2';
+
+GRANT SELECT(gEmail, gCredit), INSERT(gId, gName, gCredit), UPDATE(gId) ON DBet.Gambler TO LUser1;
+GRANT SELECT, INSERT(bGambler, bAmount, bResult), UPDATE ON DBet.Bet TO LUser1;
+GRANT SELECT(eId), INSERT, UPDATE ON DBet.Event TO LUser1;
+GRANT SELECT, INSERT(gId, gName, gEmail) ON DBet.Gambler TO LUser2;
+GRANT SELECT(bId, bEvent, bAmount), INSERT, UPDATE ON DBet.Bet TO LUser2;
+GRANT SELECT, INSERT(eName, eDate, eResult), UPDATE ON DBet.Event TO LUser2;
+
+CREATE VIEW event_no_result AS SELECT eId, eDate FROM Event WHERE eResult = NULL;
+GRANT SELECT ON event_no_result TO LUser1;
+CREATE VIEW gambler_id_credit AS SELECT gId, gCredit FROM Gambler;
+GRANT SELECT ON gambler_id_credit TO LUser1;
+
+DELIMITER //
+CREATE PROCEDURE DoubleBet(IN betId INT)
+BEGIN
+	UPDATE Bet SET bAmount = bAmount * 2 WHERE bId = betId;
+END //
+DELIMITER ;
+GRANT EXECUTE ON DBet.* TO LUser1;
+
+DELIMITER //
+CREATE PROCEDURE UpdateEvent(IN eventId INT, IN newResult INT)
+BEGIN
+	UPDATE Event SET eResult = newResult WHERE eId = eventId;
+END //
+DELIMITER ;
+(LUser1-ek badu exekutatzeko baimena DBet-n)
+
+CREATE VIEW event_info AS SELECT eId, eName, eResult FROM Event;
+GRANT SELECT ON event_info TO LUser2;
+CREATE VIEW 2021_gambler_info AS SELECT gId, gName FROM Gambler JOIN Bet on gId = bGambler JOIN Event ON bEvent = eId WHERE YEAR(eDate) = 2021;
+GRANT SELECT ON 2021_gambler_info TO LUser2;
+
+DELIMITER //
+CREATE PROCEDURE update_bet(IN betId INT, IN newAmount INT)
+BEGIN
+	UPDATE Bet SET bAmount = newAmount WHERE bId = betId;
+END //
+DELIMITER ;
+GRANT EXECUTE ON DBet.* TO LUser2;
+
+DELIMITER //
+CREATE PROCEDURE no_bet_now(IN gamblerId INT, IN newName VARCHAR(64))
+BEGIN
+	UPDATE Gambler SET gName = newName WHERE gId = gamblerId AND gId NOT IN (
+	SELECT DISTINCT bGambler FROM Bet JOIN Event ON Bet.bEvent = Event.eId
+	WHERE YEAR(eDate) = YEAR(CURDATE())
+	);
+END
+DELIMITER ;

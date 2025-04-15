@@ -1,0 +1,8 @@
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+select ?location where {
+    ?person foaf:name "Aitor Labajo".
+    ?person <http://vocab.data.gov/def/drm#worksFor> ?museo .
+    ?museo rdfs:label ?location .
+}

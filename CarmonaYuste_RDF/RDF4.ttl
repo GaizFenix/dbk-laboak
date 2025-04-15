@@ -1,0 +1,5 @@
+@prefix wikidata: <http://www.wikidata.org/entity/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix place: <http://carmonayuste.eus/place/> .
+
+place:Bilbo owl:sameAs wikidata:Bilbao .

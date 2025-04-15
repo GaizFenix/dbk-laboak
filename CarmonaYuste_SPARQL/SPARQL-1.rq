@@ -1,0 +1,5 @@
+select * where {
+    graph <http://data.abd.ehu.eus/museoak> {
+    	?s ?p ?o .
+	}
+}

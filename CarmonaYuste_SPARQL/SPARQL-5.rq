@@ -1,0 +1,12 @@
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX dbo: <http://dbpedia.org/ontology/>
+
+SELECT ?s ?p ?o ?museum ?g WHERE {
+    GRAPH ?g {
+        ?museum rdf:type <http://dbpedia.org/ontology/museum> .
+        ?s <http://vocab.data.gov/def/drm#worksFor> ?museum .
+        ?s foaf:name "Aitor Labajo" .
+        ?s ?p ?o .
+    }
+}
