@@ -1,0 +1,9 @@
+@prefix : <http://example.com/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:charlie a :User ;
+    schema:name "Charlie" , "Chuck" ;
+    schema:gender 42 ;
+    schema:birthDate "15th May 1990" ;
+    schema:knows _:anon .

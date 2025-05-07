@@ -1,0 +1,74 @@
+@prefix : <http://example.com/rugby#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+
+:TeamShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Team ;
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+
+:TournamentShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Tournament ;
+    sh:property [
+        sh:path schema:name ;
+        sh:datatype xsd:string ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:startDate ;
+        sh:datatype xsd:date ;
+        sh:lessThan schema:endDate ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path schema:endDate ;
+        sh:datatype xsd:date ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :hasTeam ;
+        sh:minCount 2 ;
+        sh:nodeKind sh:IRI ;
+        sh:class :Team ;
+    ] ;
+
+:MatchShape
+    a sh:NodeShape ;
+    sh:targetClass schema:Match ;
+    sh:property [
+        sh:path schema:date ;
+        sh:datatype xsd:date ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+    ] ;
+    sh:property [
+        sh:path :homeTeam ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:class :Team ;
+    ] ;
+    sh:property [
+        sh:path :awayTeam ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:class :Team ;
+    ] ;
+    sh:property [
+        sh:path :tournament ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:nodeKind sh:IRI ;
+        sh:class :Tournament ;
+    ] ;

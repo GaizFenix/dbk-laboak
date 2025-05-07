@@ -1,0 +1,14 @@
+@prefix : <http://example.com/ns#> .
+@prefix schema: <http://schema.org/> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:alice a :User ;
+    schema:name "Alice Smith" ;
+    schema:gender "Female" ;
+    schema:birthDate "1990-05-15"^^xsd:date ;
+    schema:knows :bob .
+
+:bob a :User ;
+    schema:name "Bob Johnson" ;
+    schema:gender schema:Male ;
+    schema:birthDate "1988-12-03"^^xsd:date .
