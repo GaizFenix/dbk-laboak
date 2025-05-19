@@ -3,7 +3,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 :England a :Team ;
-    schema:name "England" .
+    schema:name 48 .
 
 :France a :Team ;
     schema:name "France" .

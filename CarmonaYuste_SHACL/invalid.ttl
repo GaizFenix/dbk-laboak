@@ -3,7 +3,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 
 :charlie a :User ;
-    schema:name "Charlie" , "Chuck" ;
-    schema:gender 42 ;
+    schema:name "Charlie";
+    schema:gender schema:Male ;
     schema:birthDate "15th May 1990" ;
-    schema:knows _:anon .
+    schema:knows :alice .

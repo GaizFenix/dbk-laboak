@@ -3,19 +3,18 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 
-:TeamShape
-    a sh:NodeShape ;
-    sh:targetClass schema:Team ;
+:TeamShape a sh:NodeShape ;
+    sh:targetClass :Team ;
     sh:property [
         sh:path schema:name ;
         sh:datatype xsd:string ;
         sh:minCount 1 ;
         sh:maxCount 1 ;
-    ] ;
+    ] .
 
 :TournamentShape
     a sh:NodeShape ;
-    sh:targetClass schema:Tournament ;
+    sh:targetClass :Tournament ;
     sh:property [
         sh:path schema:name ;
         sh:datatype xsd:string ;
@@ -40,11 +39,11 @@
         sh:minCount 2 ;
         sh:nodeKind sh:IRI ;
         sh:class :Team ;
-    ] ;
+    ] .
 
 :MatchShape
     a sh:NodeShape ;
-    sh:targetClass schema:Match ;
+    sh:targetClass :Match ;
     sh:property [
         sh:path schema:date ;
         sh:datatype xsd:date ;
@@ -71,4 +70,4 @@
         sh:maxCount 1 ;
         sh:nodeKind sh:IRI ;
         sh:class :Tournament ;
-    ] ;
+    ] .
